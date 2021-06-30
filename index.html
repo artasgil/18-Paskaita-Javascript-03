@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript trecia paskaita</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f4a6959a9421eca9a791bfd0fcb4798aca6143f7">
+        <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e6b09338755ae21945fb6ad44abb8da0e366f39f">
+        <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c0b979a1ce5ac7dcee668fd3d5c9dd7530c41e17">
+        <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/242becca03d78726f8dec19bf48d0a31e3ca8fee">
+
+
+        <label for="koa">Koeficientas a</label>
+        <input placeholder="a" type="text" name="koa" id="koa" />
+        <label for="kob">Koeficientas b</label>
+        <input placeholder="b" type="text" name="kob" id="kob" />
+        <label for="koc">Koeficientas c</label>
+        <input placeholder="c" type="text" name="koc" id="koc" />
+        <button class="patvirtinti">Patvritinti</button>
+
+        <div class="rezultatas">
+        </div>
+    </div>
+    <script>
+        "use strict"
+
+        // += reiskia, prie elemnto, kad jau yra dar prideda kazka naujo.
+        // .patvirtinti - pasirenka klase, o jeigu butu id - #
+        document.querySelector('.patvirtinti').addEventListener('click', function () {
+            var a, b, c, d, x1, x2;   // d- 
+            var isvedimoElementas;
+            isvedimoElementas = document.querySelector(".rezultatas");
+
+            // .value pasako, kad a yra a elemento reiksme
+            // parseFloat - bandyk is laukelio paimti skaitine reiksme
+
+            a = parseFloat(document.querySelector("#koa").value);
+            b = parseFloat(document.querySelector("#kob").value);
+            c = parseFloat(document.querySelector("#koc").value);
+
+            d = (b ** 2) - 4 * a * c;
+
+            // console.log(d);
+
+            //a ir b ir c negali buti 0 +
+            //d ==0;
+            //d < 0;
+            //d > 0;
+
+            if (a == 0 && b == 0 && c == 0) {
+                console.log("Visi koeficentai yra 0, del to ispresti lygties negalim");
+                isvedimoElementas.innerHTML = "Visi koeficentai yra 0, del to ispresti lygties negalim"
+            } else {
+                if (d == 0) {
+                    //x1 = -b/2a
+                    x1 = -b / (2 * a);
+                    isvedimoElementas.innerHTML = x1;
+                } else if (d > 0) {
+                    x1 = (-b + Math.sqrt(d)) / (2 * a);
+                    x2 = (-b - Math.sqrt(d)) / (2 * a);
+                    isvedimoElementas.innerHTML = x1 + " " + x2;
+                    //x1=(-b+sqrt(d))/2a
+                    //x1=(-b+sqrt(d))/2a
+                } else if (d < 0) {
+                    console.log("Realiuju sprendiniu nera");
+                    isvedimoElementas.innerHTML = "Realiuju sprendiniu nera";
+                }
+                console.log("d = " + d);
+            }
+        });
+
+
+
+
+
+
+
+        
+
+        // console.log(a);
+        // console.log(b);
+
+
+
+
+        // if(a > b) {
+        //     console.log("Skaicius a yra didesnis uz skaiciu b");
+        // } else if (b > a) {
+        //     console.log("Skaicius b yra didesnis uz skaiciu a");
+        // } else if (a==b) {
+        //     console.log("Skaicius yra lygus 0");
+        // } else {
+        //     console.log("Skaicius yra neskaicius");
+        // }
+
+        // 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Surasti tiesinės kvadratinės lygties sprendiniu. Turi buti galimybe 
+        // ivesti koeficientus a,b,c.
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
