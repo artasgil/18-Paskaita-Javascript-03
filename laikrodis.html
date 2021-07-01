@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,7 @@
         font-size: 48px;
     }
 </style>
+
 <body>
 
     <div class="laikrodis">
@@ -24,53 +26,85 @@
 
         // setInterval Paleidineja koda kas sekunde - 1000 nuodomas milisekundemes, 1sec= 1000 milisekundziu
         //setTimeout
-        setInterval(function() {
-
-        
+        setInterval(function () {
 
 
-        var isvedimoElementas = document.querySelector(".laikrodis");
-        var siosDienosData = new Date();
-
-        var vakarasRytas = "AM";
-
-        var h = siosDienosData.getHours();  // 0-23
-        var m = siosDienosData.getMinutes(); // 0-59
-        var s = siosDienosData.getSeconds(); // 0-59
-      
-
-        if (h == 12) {
-            h = h - 12;
-            vakarasRytas = "PM";
-        }
-
-        if(h == 0) {
-            h = 12;
-        }
-
-        if (h > 12) {
-            h = h - 12;
-            vakarasRytas = "PM";
-        }
-        
 
 
-        if(h<=9) {
-            h = "0" + h;
-        }
+            var isvedimoElementas = document.querySelector(".laikrodis");
+            var siosDienosData = new Date();
 
-        if(m<=9) {
-            m = "0"+m;
-        }
+            var vakarasRytas = "AM";
 
-        if(s<=9) {
-            s = "0" + s;
-        }
+            var h = siosDienosData.getHours();  // 0-23
+            var m = siosDienosData.getMinutes(); // 0-59
+            var s = siosDienosData.getSeconds(); // 0-59
+            var diena = siosDienosData.getDay();
+            var laikrodzioDiena = "Pirmadienis";
 
-        isvedimoElementas.innerHTML = h + " : " + m + " : " + s + " " + vakarasRytas;
 
-    }, 1000)
+            switch (diena) {
+                case 0:
+                    laikrodzioDiena = "Sekmadienis";
+                    break;
+                case 1:
+                    laikrodzioDiena = "Pirmadienis";
+                    break;
+                case 2:
+                    laikrodzioDiena = "Antradienis";
+                    break;
+                case 3:
+                    laikrodzioDiena = "Treciadienis";
+                    break;
+                case 4:
+                    laikrodzioDiena = "Ketvirtadienis";
+                    break;
+                case 5:
+                    laikrodzioDiena = "Penktadienis";
+                    break;
+                case 6:
+                    laikrodzioDiena = "Sestadienis";
+                    break;
+                default:          // Default čia veikia kaip else.
+                    console.log("Tokios dienos nėra");
+            }
+
+            console.log(diena); // Išvedimas testavimui
+            if (h == 12) {
+                h = h - 12;
+                vakarasRytas = "PM";
+            }
+
+            if (h == 0) {
+                h = 12;
+            }
+
+            if (h > 12) {
+                h = h - 12;
+                vakarasRytas = "PM";
+            }
+
+
+
+            if (h <= 9) {
+                h = "0" + h;
+            }
+
+            if (m <= 9) {
+                m = "0" + m;
+            }
+
+            if (s <= 9) {
+                s = "0" + s;
+            }
+
+            isvedimoElementas.innerHTML = h + " : " + m + " : " + s + " " + vakarasRytas + " " + laikrodzioDiena;
+
+        }, 1000)
+
+
     </script>
-    
+
 </body>
+
 </html>
